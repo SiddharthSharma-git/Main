@@ -1,0 +1,94 @@
+Appium Mobile Automation Framework Structure
+=============================================
+
+appium-mobile-framework/
+│
+├── base/                           # Core Framework Components
+│   ├── __init__.py
+│   ├── driver_factory.py          # Appium driver initialization & management
+│   └── base_page.py               # Base page with common web element methods
+│
+├── pageObjects/                    # Page Object Model (POM)
+│   ├── __init__.py
+│   ├── login_page.py              # Login page object
+│   └── home_page.py               # Home page object
+│
+├── tests/                          # Test Cases
+│   ├── __init__.py
+│   ├── conftest.py                # Pytest fixtures, hooks & configurations
+│   ├── test_login.py              # Login functionality tests
+│   └── test_home.py               # Home page functionality tests
+│
+├── util/                           # Utility Classes
+│   ├── __init__.py
+│   ├── logger.py                  # Centralized logging utility
+│   └── common_utils.py            # Common helper functions
+│
+├── reports/                        # Report Generation
+│   ├── __init__.py
+│   └── report_generator.py       # Test report generation utilities
+│
+├── config/                         # Configuration Files
+│   ├── __init__.py
+│   └── config.yaml                # Framework configuration
+│
+├── requirements.txt                # Python dependencies
+├── pytest.ini                      # Pytest configuration
+├── .env.example                    # Environment variables template
+├── .gitignore                      # Git ignore rules
+├── setup.py                        # Setup script
+├── run_tests.sh                    # Test execution script
+├── README.md                       # Comprehensive documentation
+├── QUICKSTART.md                   # Quick start guide
+└── STRUCTURE.txt                   # This file
+
+Generated Directories (during test execution):
+├── logs/                           # Execution logs
+├── test_reports/                   # HTML & Allure reports
+│   ├── screenshots/               # Failure screenshots
+│   └── allure_results/            # Allure test results
+└── venv/                          # Python virtual environment
+
+Key Features:
+=============
+✓ Page Object Model (POM) architecture
+✓ Support for Android and iOS platforms
+✓ Pytest-based test framework
+✓ Comprehensive logging with color-coded console output
+✓ Multiple report formats (HTML, Allure)
+✓ Automatic screenshot capture on test failure
+✓ Parallel test execution support
+✓ Configurable via YAML and environment variables
+✓ Reusable base page with common methods
+✓ Custom test execution script
+
+Test Markers:
+=============
+• @pytest.mark.smoke      - Quick smoke tests
+• @pytest.mark.regression - Full regression tests
+• @pytest.mark.android    - Android-specific tests
+• @pytest.mark.ios        - iOS-specific tests
+
+Quick Commands:
+===============
+# Install dependencies
+pip install -r requirements.txt
+
+# Run all tests
+pytest tests/
+
+# Run smoke tests
+pytest -m smoke
+
+# Run with HTML report
+pytest --html=test_reports/report.html
+
+# Run with platform selection
+pytest --platform=android
+
+# Run with test script
+./run_tests.sh --platform android --marker smoke
+
+# Generate Allure report
+pytest --alluredir=test_reports/allure_results
+allure serve test_reports/allure_results

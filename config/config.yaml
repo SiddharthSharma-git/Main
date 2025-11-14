@@ -1,0 +1,39 @@
+# Appium Framework Configuration
+
+# Appium Server Configuration
+appium:
+  server_url: "http://localhost:4723"
+  
+# Android Configuration
+android:
+  platform_name: "Android"
+  device_name: "emulator-5554"
+  platform_version: "16"
+  automation_name: "UIAutomator2"
+  app_path: ""
+  app_package: "com.mumzworld.android"
+  app_activity: "com.mumzworld.android.MainActivity"
+  no_reset: true
+  connect_hardware_keyboard: true
+  
+# iOS Configuration
+ios:
+  platform_name: "iOS"
+  device_name: "iPhone 14"
+  automation_name: "XCUITest"
+  app_path: ""
+  bundle_id: "com.example.app"
+  no_reset: false
+
+# Test Configuration
+test:
+  implicit_wait: 10
+  explicit_wait: 20
+  screenshot_on_failure: true
+  
+# Logging Configuration
+logging:
+  level: "INFO"
+  console_output: true
+  file_output: true
+
