@@ -1,15 +1,9 @@
-"""
-Login Page Object
-Contains all elements and methods for login functionality
-"""
+
 from appium.webdriver.common.appiumby import AppiumBy
 from base.base_page import BasePage
 
 
 class LoginPage(BasePage):
-    """Login Page Object class"""
-    
-    # Locators - Based on actual app source
     EMAIL_FIELD = (AppiumBy.XPATH, '//android.widget.EditText[@text="Email"]')
     PASSWORD_FIELD = (AppiumBy.XPATH, '//android.widget.EditText[@text="Password"]')
     SIGN_IN_BUTTON = (AppiumBy.XPATH, '(//android.widget.TextView[@text="Sign In"])[4]')
@@ -18,44 +12,28 @@ class LoginPage(BasePage):
     ERROR_MESSAGE = (AppiumBy.ID, "com.mumzworld.android:id/error_message")
     
     def __init__(self, driver):
-        """Initialize Login Page"""
+       
         super().__init__(driver)
         self.logger.info("Login Page initialized")
     
     def enter_email(self, email: str):
-        """
-        Enter email address
         
-        Args:
-            email: Email to enter
-        """
         self.logger.info(f"Entering email: {email}")
         self.wait_for_element_clickable(self.EMAIL_FIELD, timeout=10)
         self.send_keys(self.EMAIL_FIELD, email)
     
     def enter_password(self, password: str):
-        """
-        Enter password
         
-        Args:
-            password: Password to enter
-        """
         self.logger.info("Entering password")
         self.send_keys(self.PASSWORD_FIELD, password)
     
     def click_sign_in_button(self):
-        """Click sign in button"""
+        
         self.logger.info("Clicking sign in button")
         self.click(self.SIGN_IN_BUTTON)
     
     def login(self, email: str, password: str):
-        """
-        Perform complete login action
         
-        Args:
-            email: Email to login with
-            password: Password to login with
-        """
         self.logger.info(f"Logging in with email: {email}")
         self.enter_email(email)
         self.enter_password(password)
@@ -63,25 +41,15 @@ class LoginPage(BasePage):
         self.click_sign_in_button()
     
     def is_error_message_displayed(self) -> bool:
-        """
-        Check if error message is displayed
         
-        Returns:
-            bool: True if error message is displayed
-        """
         return self.is_element_displayed(self.ERROR_MESSAGE)
     
     def get_error_message(self) -> str:
-        """
-        Get error message text
         
-        Returns:
-            str: Error message text
-        """
         return self.get_text(self.ERROR_MESSAGE)
     
     def click_forgot_password(self):
-        """Click forgot password link"""
+        
         self.logger.info("Clicking forgot password link")
         self.click(self.FORGOT_PASSWORD_LINK)
 
