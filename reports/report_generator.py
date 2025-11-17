@@ -1,7 +1,3 @@
-"""
-Report Generator Module
-Handles test report generation and management
-"""
 import os
 from datetime import datetime
 from typing import Dict, List
@@ -10,7 +6,7 @@ from util.common_utils import CommonUtils
 
 
 class ReportGenerator:
-    """Generate and manage test reports"""
+   
     
     logger = Logger.get_logger(__name__)
     
