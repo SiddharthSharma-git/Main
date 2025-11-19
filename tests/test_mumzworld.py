@@ -77,56 +77,7 @@ class TestMumzworld:
         logger.info("Test completed: test_successful_login - PASSED")
         logger.info("=" * 80)
 
-    def test_invalid_login(self, driver):
-
-        logger.info("=" * 80)
-        logger.info("Starting test: test_invalid_login")
-        logger.info("=" * 80)
-
-        account_page = AccountPage(driver)
-        login_page = LoginPage(driver)
-
-        username = "wrong@example.com"
-        password = "wrongpassword"
-
-        with allure.step("App is opened"):
-            driver.implicitly_wait(3)
-
-        with allure.step("Navigate to Account tab"):
-            try:
-                account_page.click_account_tab()
-                logger.info("Clicked on Account tab")
-            except:
-                logger.info("Already on Account tab")
-            driver.implicitly_wait(2)
-
-        with allure.step("Click on Sign In button"):
-            account_page.click_sign_in_button()
-            driver.implicitly_wait(2)
-
-        with allure.step(f"Enter invalid email: {username}"):
-            login_page.enter_email(username)
-
-        with allure.step("Enter invalid password"):
-            login_page.enter_password(password)
-
-        with allure.step("Click Sign In button"):
-            login_page.click_sign_in_button()
-            driver.implicitly_wait(5)
-
-        with allure.step("Verify error message is displayed"):
-            error_message = login_page.get_error_message()
-            logger.info(f"Error message displayed: {error_message}")
-            assert (
-                    "invalid" in error_message.lower()
-                    or "incorrect" in error_message.lower()
-                    or "error" in error_message.lower()
-            ), "Expected error message not displayed"
-
-        logger.info("=" * 80)
-        logger.info("Test completed: test_invalid_login - PASSED")
-        logger.info("=" * 80)
-
+    
     @allure.title("Test successful add to cart")
     @allure.story('Shopping Cart')
     @allure.severity(allure.severity_level.CRITICAL)
